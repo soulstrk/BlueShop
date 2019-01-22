@@ -1,0 +1,297 @@
+<head>
+<link href="../css/mainPage.css" rel="stylesheet">
+	
+<style type="text/css">
+.hover01 figure img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.hover01 figure:hover img {
+	-webkit-transform: scale(1.15);
+	transform: scale(1.15);
+}
+
+figure {
+	width: 300px;
+	height: 350px;
+	margin: 0;
+	padding: 0;
+	background: #fff;
+}
+</style>
+
+</head>
+	<style type="text/css">
+	@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+	@import url(http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+	@media (min-width: 992px) {
+	  body {
+	    padding-top: 56px;
+	  }
+	}
+	</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 부트스트랩 코드 -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="../css/font-awesome.min.css" media="screen" title="no title" >
+<link rel="stylesheet" href="../css/style.css?ver=1" media="screen" title="no title" >
+<link href="../css/buy_text.css?ver=5" rel="stylesheet">
+<link href="../css/nav.css?ver=4" rel="stylesheet">
+<link href="../css/productManagement.css?ver=6" rel="stylesheet">
+<!-- w3.css 코드 -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+<!-- <script type="text/javascript">
+$(document).ready(function() {
+	location.href = "mainList.do";
+})
+</script> -->
+
+  <div>
+	   <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; top:0px; width:410px;z-index: 2;" id="mySidebar">
+		  <button onclick="w3_close()" class="w3-bar-item w3-large"><span style="float:left">최근 본 상품</span> <span style="float:right;">Close &times;</span></button>
+		  <div id="view" style="color:gray;">
+		  </div>
+	   </div>
+	   <input type="hidden" name="id" id="id" value="<%=id%>">
+	   <button id="btn1" class="w3-button w3-gray w3-xlarge" onclick="getView()" style="position:fixed;z-index: 1;top:0px;"><span style="color:white;">☰</span></button>
+   </div>
+   
+  <!-- 헤더부분 -->
+  <nav class="navbar navbar-expand-lg navbar-white" style="height: 110px;">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02">
+	   <span class="navbar-toggler-icon"></span>
+	</button>
+  	
+  <!-- 메뉴창들 -->
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav" style="margin-left: 300px; height: 100px;">
+	  <li class="nav-item active">
+      	<i class="fa fa-home w3-xxxlarge"></i>
+      </li>
+      <li class="nav-item active" > <!-- 로그인 / 로그아웃 처리 -->
+			<a class="nav-link" href="" data-toggle="modal" data-target="#loginModal" id="login_logout"><b>Login</b></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="index.jsp?content1=join.jsp"><b>Join</b></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="cart.do?cmd=cart&id=<%=id%>"><b>Cart</b></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link active" href="customerboard.do?cmd=list"><b>FAQ</b></a>
+      </li>
+      <li class="nav-item active">
+        <div class="dropdown">
+        <a class="nav-link active dropdown-toggle" href="customerboard.do?cmd=list" data-toggle="dropdown"><b>Picture</b>
+		  <span class="caret"></span></a>
+		  <ul class="dropdown-menu">
+		    <li><a href="opainting.do?cmd=oriental&p_kind=서양화">동양화</a></li>
+		    <li><a href="opainting.do?cmd=oriental&p_kind=동양화">서양화</a></li>
+		  </ul>
+		</div>
+      </li>
+      <li class="nav-item active"> <!-- 관리자페이지 처리 -->
+			&nbsp;
+	<!-- 		<div class="dropdown dropright" style="margin-left: 30px;">
+			  <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+			    Admin
+			  </button>
+			  <div class="dropdown-menu">
+			    <a class="dropdown-item" href="adminProduct.do?adminNum=1">주문/매출 통계</a>
+			    <a class="dropdown-item" href="admin.do?adminNum=1&num=0">회원관리</a>
+			    <a class="dropdown-item" href="index.jsp?content1=admin/productEnroll.jsp">상품등록</a>
+			    <a class="dropdown-item" href="adminProduct.do?adminNum=3&pageNum=1">상품관리</a>
+			    <a class="dropdown-item" href="deliveryManagement.do?cmd=delivering">배송관리</a>
+			  </div>
+			</div> -->
+			<script type="text/javascript">
+				$(document).ready(function() {
+					 $('#searchForm').css('left','455px'); 
+					 $('img[src="../images/hd_logo.png"]').css('left','150px'); 
+					 $('#myPage').css('left','380px');
+					 $('.live').css('left','60px');
+					 $('#testing').css('left','170px')
+				})
+			</script>
+      </li>
+      <li class="nav-item active">
+        <a class="navbar-brand" href="../mainList.do"><img src="../images/hd_logo.png" style="width: 223px; height: 45px; position: relative; left: 250px; padding-bottom: 0px;"></a>
+      </li>
+      <li class="nav-item active" id="myPage">
+        <a class="nav-link" href="mypage.do?cmd=info&id=<%=id%>&info=mypage&date=x&date1=0&date2=0"><b>My page</b></a>
+      </li>
+      <li class="nav-item active">
+        <form class="form-inline my-2 my-lg-2" id="searchForm"style="position: relative; left: 505px;" method="post" action="search.do?pageNum=1">
+	      <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search" id="searchP" onkeyup="searchW()" autocomplete=off>
+	      <button class="btn" type="submit"><img src="../images/magnifier.png"></button>
+	    </form>
+      </li>
+    </ul>
+    <div style="background-color:white; color: black; border: 1px solid; position: relative; left: 270px; top:280px; width: 240px; z-index: 1; height: 500px; display: none; overflow: scroll; font-family: 'Nanum Gothic', serif; font-weight: bold;" id="testing"></div>
+  </div>
+</nav>
+
+    <!-- 슬라이드쇼 부분  -->
+    <div class="container-fluid" style="padding-top: 20px;">
+      <div class="row">
+     	 <div id="demo" class="carousel slide coco" data-ride="carousel">
+
+		  <!-- Indicators -->
+		  <ul class="carousel-indicators">
+		    <li data-target="#demo" data-slide-to="0" class="active"></li>
+		    <li data-target="#demo" data-slide-to="1"></li>
+		    <li data-target="#demo" data-slide-to="2"></li>
+		    <li data-target="#demo" data-slide-to="2"></li>
+		  </ul>
+		
+		  <!-- 슬라이드쇼 그림 -->
+		  <div class="carousel-inner" style="z-index: 0;">
+		    <div class="carousel-item active">
+		      <img class="s_img" src="../images/s3.jpg" alt="Los Angeles">
+		    </div>
+		    <div class="carousel-item">
+		    <img class="s_img" src="../images/slide1.png" alt="New York">
+		    </div>
+		    <div class="carousel-item">
+		      <img class="s_img" src="../images/s3.jpg" alt="Chicago">
+		    </div>
+		    <div class="carousel-item">
+		      <img class="s_img" src="../images/slide1.png" alt="Chicago">
+		    </div>
+		  </div>
+		
+		  <!-- Left and right controls -->
+		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+		    <span class="carousel-control-prev-icon"></span>
+		  </a>
+		  <a class="carousel-control-next" href="#demo" data-slide="next">
+		    <span class="carousel-control-next-icon"></span>
+		  </a>
+		
+		</div>
+      </div> 
+	  <div class="row">
+        <div class="col-lg-12">
+          <h1 class="my-4" id="best10" > Best Picture 10 </h1>
+        </div>
+      </div>
+     </div>
+     <!-- /슬라이드쇼 부분 -->
+     
+     <!-- 두번째 container 시작 // 상품이미지 -->
+     <div class="container-fluid">  
+          <div class="row" id="goodsRow">
+          	<div class="col-md-1" style="height: 150px;"></div>
+          	
+          	<div class="col-md-10">
+          	 <div class="row" id="conRow">
+          	 <c:forEach var="vo" items="${list }" varStatus="status">
+          	  <div class="col">
+               <div class="card" style="width: 310px; margin-bottom: 30px; height: 550px;">
+                <a class="hover01 column" style="z-index: 1" href="opainting.do?cmd=detail&p_num=${vo.pNum }"><figure><img class="card-img-top" src="painting/o/${vo.pImage }" alt="test"></figure></a>
+                  <a class="card-img-overlay">
+				    <span class="best" style="display: block;z-index: 1;">Best${status.index+1 }</span>
+				  </a>
+				  <div class="card-footer" style="background-color: white;">
+				  	<ul>
+				  		<li id="goodsTitle">${vo.pName }</li>
+				  		<li id="subname">${vo.pArtist }</li>
+				  		<li id="customer">33,000원</li>
+				  		<li id="price">${vo.pPrice }</li>
+				  		<li style="margin-top: 5px;"><span><img src="../images/hit.gif" alt="abc" /></span>
+				  		<c:choose>
+				  			<c:when test="${vo.pBest == 2 }">
+				  				<span style="float: right;"><img src="../images/icon_05.gif" alt="abc" /></span>
+				  			</c:when>
+				  			<c:when test="${vo.pBest == 3 }">
+				  				<span style="float: right;"><img src="../images/freedelivery.gif" alt="abc" /></span>
+				  			</c:when>
+							<c:otherwise>
+								
+							</c:otherwise>
+				  		</c:choose>
+				  		</li>
+				  	</ul>
+				  </div>
+               </div>
+              </div>
+              </c:forEach>
+             </div>
+            <div class="col-md-1" style="height: 150px;"></div>
+          </div>
+     </div>
+     <div class="row">
+        <div class="col-lg-12">
+          <h1 class="my-4" id="best10" style="position: relative; bottom: 100px;"> SALE </h1>
+        </div>
+      </div>
+     </div>    
+    <!-- 두번째 container 끝 -->
+    <!-- 세번째 container 할인상품 -->
+    
+    <div class="container-fluid">  
+          <div class="row" id="goodsRow">
+          	<div class="col-md-1" style="height: 150px;"></div>
+          	
+          	<div class="col-md-10">
+          	 <div class="row" id="conRow">
+          	 <c:forEach var="vo" items="${saleList }" varStatus="status">
+          	  <div class="col">
+               <div class="card" style="width: 310px; margin-bottom: 30px; height: 550px;">
+                <a class="hover01 column" style="z-index: 1" href="opainting.do?cmd=detail&p_num=${vo.pNum }"><figure><img class="card-img-top" src="painting/o/${vo.pImage }" alt="test"></figure></a>
+                  <a class="card-img-overlay" href="opainting.do?cmd=detail&p_num=${vo.pNum }">
+				    <span class="best" style="display: block;z-index: 1;">${vo.pDiscountRate }%</span>
+				  </a>
+				  <div class="card-footer" style="background-color: white;">
+				  	<ul>
+				  		<li id="goodsTitle">${vo.pName }</li>
+				  		<li id="subname">${vo.pArtist }</li>
+				  		<li id="customer">33,000원</li>
+				  		<li id="price">${vo.pPrice }</li>
+				  		<li style="margin-top: 5px;"><span><img src="../images/sale.gif" alt="abc" /></span>
+				  		<c:choose>
+				  			<c:when test="${vo.pBest == 2 }">
+				  				<span style="float: right;"><img src="../images/icon_05.gif" alt="abc" /></span>
+				  			</c:when>
+				  			<c:when test="${vo.pBest == 3 }">
+				  				<span style="float: right;"><img src="../images/freedelivery.gif" alt="abc" /></span>
+				  			</c:when>
+							<c:otherwise>
+								
+							</c:otherwise>
+				  		</c:choose>
+				  		</li>
+				  	</ul>
+				  </div>
+               </div>
+              </div>
+              </c:forEach>
+             </div>
+            <div class="col-md-1" style="height: 150px;"></div>
+          </div>
+     </div>
+     </div> 
+     <!-- 세번째 container 끝 -->
+
+<footer class="py-5 bg-dark">
+	<div class="container">
+		<p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+		<br>
+		<p class="m-0 text-center text-white">made by 안수홍 고동현 이재용 정예인</p>
+	</div>
+</footer>
+
