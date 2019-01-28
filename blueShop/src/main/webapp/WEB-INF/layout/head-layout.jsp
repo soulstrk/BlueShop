@@ -13,7 +13,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" media="screen" title="no title" >
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css?ver=1" media="screen" title="no title" >
 <link href="${pageContext.request.contextPath }/resources/css/buy_text.css?ver=5" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/resources/css/nav.css?ver=4" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/resources/css/nav.css?ver=5" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/resources/css/productManagement.css?ver=6" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>

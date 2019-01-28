@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script src="js/jy_join.js?ver=10"></script>
-
 	<style type="text/css">
 	@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
 	@import url(http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
@@ -19,12 +17,12 @@
        <h1>회원가입</h1>
      </div>
      <div class="col-md-9 col-md-offset-3">
-       <form role="form" action="members.do?number=1" method="post" name="form">
+       <form role="form" action="#" method="post" name="form">
          <div class="form-group form-group-custom">
            <label for="id">아이디</label>
            <span style="color:red">*</span>&nbsp;&nbsp;
-           <button type="button" class="btn btn-secondary" id="idcheck_btn" disabled="disabled" onclick="dupliChk()">중복검사</button>&nbsp;&nbsp;&nbsp;<span id="dupliChkSpan"></span>
-           <input type="text" class="form-control" id="ide" placeholder="아이디 8~12자 영대소문자 와 숫자" name="id" onkeyup="idLiveCheck()"><img class="join_image id" src="" id="img_id">
+           <button type="button" class="btn btn-secondary" id="idcheck_btn" disabled="disabled">중복검사</button>
+           <input type="text" class="form-control" id="mbId" placeholder="아이디 8~12자 영대소문자 와 숫자" name="id" onkeyup="idLiveCheck()"><img class="join_image id" src="" id="img_id">
          </div>
          
          <div class="form-group form-group-custom">
@@ -74,19 +72,6 @@
          </div>
          
          <div class="form-group">
-           비밀번호 찾기 질문<span style="color:red">*</span>
-           <select name="q_num" id="q_sel">
-           	<option value="" selected>질문선택</option>
-           	<option value="1">당신의 고향은 어디입니까?</option>
-           	<option value="2">당신의 초등학교 이름은?</option>
-           	<option value="3">당신의 키는 몇입니까?</option>
-           	<option value="4">당신의 취미는 무엇입니까?</option>
-           	<option value="5">당신의 성격은 어떻습니까?</option>
-           </select>
-           <input type="text" class="form-control" name="answer" placeholder="답변을 입력해주세요"/>
-         </div>
-         
-         <div class="form-group">
          <label for="addr">주소</label><span style="color:red">*</span><br>
          <input type="text" id="postcode" placeholder="우편번호" name = "postnum" readonly="readonly">
 		<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
@@ -102,3 +87,21 @@
        </form>
      </div>
    </div>
+
+   <script>
+     $(function(){ 
+      $("#idcheck_btn").on("click", function() {
+        var mbId = $("#mbId").val();
+
+        //validateCheckId(mbId);
+
+        $.ajax({
+          dataType : "json",
+          url : "main/idCheck-proc.do",
+          success : function(data) {
+            Swal.fire('하이');
+          }
+        });
+      })
+     })
+   </script>

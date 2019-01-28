@@ -1,8 +1,5 @@
 package com.soul.skid.main.web;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -18,13 +15,9 @@ public class MainController {
 	@Resource
 	private HomeService homeService;
 	
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String home(Model model) throws Exception{
-		List<Map<String, Object>> list = homeService.selectMainServiceList();
-		
-		System.out.println(list);
-		
-		return "main/main.tiles";
+	@RequestMapping(value = "/main/main.do", method = RequestMethod.GET)
+	public String homeInit(Model model) throws Exception{
+		return "main/main";
 	}
 	
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.soul.skid.join.service.impl.JoinMapper">
+  
+		  <sql id="selectColumn">
+		  	MB_ID
+		  	,MB_PWD
+		  	,MB_NM
+		  	,PTN
+		  	,MB_ADDR
+		  	,DTL_ADDR
+		  	,PHONE
+		  	,EMAIL
+		  	,MB_PNT
+		  	,GENDER
+		  	,MB_REGDATE
+		  </sql>
+	  
+	 <!-- 중복체크 -->
+  	<select id="selectDuplicateCheckInfo" parameterType="map" resultType="membersVO">
+  		SELECT 
+  			<include refid="selectColumn"/>
+  		FROM
+  			MEMBERS
+  		<where>
+  			<if test="column != null and val != null">
+  				${column} = #{val}
+  			</if>
+  		</where>
+  	</select>
+  	
+  	<!-- 회원가입 입력 -->
+  	<insert id="insertMember" parameterType="membersVO">
+  		insert into	members
+		  	(MB_ID
+		  	,MB_PWD
+		  	,MB_NM
+		  	,PTN
+		  	,MB_ADDR
+		  	,DTL_ADDR
+		  	,PHONE
+		  	,EMAIL
+		  	,MB_PNT
+		  	,GENDER
+		  	,MB_REGDATE)
+		  values
+		  	(
+		  	#{mbId}
+		  	,#{mbPwd}
+		  	,#{mbNm}
+		  	,#{ptn}
+		  	,#{mbAddr}
+		  	,#{dtlAddr}
+		  	,#{phone}
+		  	,#{email}
+		  	,#{gender}
+		  	,sysdate
+		  	)
+  	</insert>
+  </mapper>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
