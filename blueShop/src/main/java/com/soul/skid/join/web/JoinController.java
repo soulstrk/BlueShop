@@ -50,6 +50,8 @@ public class JoinController {
 	@RequestMapping(value="/main/idCheck-proc.do", method = RequestMethod.GET)
 	public @ResponseBody Map<String, Object> idCheck(@RequestParam(required=true) String mbId) {
 		
+		System.out.println(mbId);
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		try {

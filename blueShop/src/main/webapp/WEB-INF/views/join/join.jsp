@@ -10,7 +10,9 @@
 	    padding-top: 56px;
 	  }
 	}
-	</style>
+  </style>
+  
+  <script src="${pageContext.request.contextPath}/resources/js/validator.js"></script>
 	
 <div class="container" style="padding-left: 240px; padding-top: 80px; padding-bottom: 50px; font-family: 'Jeju Myeongjo', serif; font-size: 25px">
      <div class="page-header">
@@ -22,19 +24,18 @@
            <label for="id">아이디</label>
            <span style="color:red">*</span>&nbsp;&nbsp;
            <button type="button" class="btn btn-secondary" id="idcheck_btn" disabled="disabled">중복검사</button>
-           <input type="text" class="form-control" id="mbId" placeholder="아이디 8~12자 영대소문자 와 숫자" name="id" onkeyup="idLiveCheck()"><img class="join_image id" src="" id="img_id">
+           <input type="text" class="form-control" id="mbId" placeholder="아이디 8~12자 영대소문자 와 숫자" name="id" onkeyup="validateCheckId()">
          </div>
          
          <div class="form-group form-group-custom">
            <label for="password">비밀번호</label>
            <span style="color:red">*</span>
-           <input type="password" class="form-control" id="password1" placeholder="비밀번호 8~20자 영대소문자와 숫자,특수문자 조합" name="pwd" onkeyup="pwd1LiveCheck()">
-           <img class="join_image pwd1" src="" id="img_pwd1">
+           <input type="password" class="form-control" id="password1" placeholder="비밀번호 8~20자 영대소문자와 숫자,특수문자 조합" name="pwd" onkeyup="validateCheckPwd()">
          </div>
+
          <div class="form-group form-group-custom">
            <label for="password2">비밀번호 확인</label><span style="color:red">*</span>
-           <input type="password" class="form-control" id="password2" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요" onkeyup="pwd2LiveCheck()">
-           <span id="pwd_msg" style="color: red;"></span>
+           <input type="password" class="form-control" id="password2" placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요" onkeyup="validateCheckEqualPwd()">
          </div><br>
          
          <div class="form-group">
@@ -68,7 +69,6 @@
          <div class="form-group">
            <label for="phone">핸드폰 번호</label><span style="color:red">*</span>
              <input type="text" class="form-control" id="phone" placeholder="- 없이 입력해 주세요" name="phone" onkeyup="phoneChk()">
-             <img class="join_image phone" src="" id="img_phone">
          </div>
          
          <div class="form-group">
@@ -90,18 +90,20 @@
 
    <script>
      $(function(){ 
+
+      // 중복체크 버튼
       $("#idcheck_btn").on("click", function() {
         var mbId = $("#mbId").val();
 
-        //validateCheckId(mbId);
-
         $.ajax({
+          Type : "get",
           dataType : "json",
-          url : "main/idCheck-proc.do",
+          url : "${pageContext.request.contextPath}/main/idCheck-proc.do?mbId="+mbId,
           success : function(data) {
             Swal.fire('하이');
           }
         });
       })
+
      })
    </script>
